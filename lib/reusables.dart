@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class Disp_playlist extends StatefulWidget {
@@ -14,12 +15,15 @@ class Disp_playlist extends StatefulWidget {
 
 class _Disp_playlistState extends State<Disp_playlist> {
   _Disp_playlistState(this.songName);
+
   final String songName;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left:15),
-      margin: const EdgeInsets.only(left: 27,right: 27,top:10),
+    return GestureDetector(child:
+    Container(
+      padding: const EdgeInsets.only(left: 15),
+      margin: const EdgeInsets.only(left: 27, right: 27, top: 10),
       height: 75,
       width: 500,
       alignment: Alignment.centerLeft,
@@ -34,7 +38,24 @@ class _Disp_playlistState extends State<Disp_playlist> {
           ),
         ],
       ),
-      child: Text(songName,style: TextStyle(fontSize: 23)),
+      child: Text(songName, style: const TextStyle(
+          fontSize: 23, color: Colors.black87,)),
+    ),
+        onLongPress: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Container(child: Center(child:Column(children: <Widget>[Text(songName,),const Image(
+                    image: AssetImage("spotred.jpg"),
+                    width: 150.0,
+                    height: 150.0,
+                    fit: BoxFit.cover,
+                  ),Text("HHAAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"),]),)
+                  ),);
+              }
+          );
+        }
     );
   }
 }
