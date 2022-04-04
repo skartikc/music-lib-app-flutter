@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Disp_playlist extends StatefulWidget {
@@ -46,13 +48,28 @@ class _Disp_playlistState extends State<Disp_playlist> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  content: Container(child: Center(child:Column(children: <Widget>[Text(songName,),const Image(
+                  content: Container(child: Center(child:Column(children: <Widget>[Text(songName,style: const TextStyle(color: Color(0xFFFFFFE9),height: 1.15, fontSize: 15),),const Image(
                     image: AssetImage("spotred.jpg"),
                     width: 150.0,
                     height: 150.0,
                     fit: BoxFit.cover,
-                  ),Text("HHAAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"),]),)
-                  ),);
+                  ),const SizedBox(height: 15,)
+                    ,const Text("'Tired' is a song by Norwegian DJ and music producer Alan Walker, featuring Irish singer-songwriter Gavin James. The song was written by Mike Needle, Dan Bryer, Gavin James and Ollie Green, and was produced by Alan Walker, Gunnar Greve, Mood Melodies, Lars Kristian Rosness, Marcus Arnbekk, Fredrik Borch Olsen and Carl Hovind. It was released commercially for digital download on 19 May 2017. On 14 July 2017, Kygo released a remix of the song. In January 2018, Big Iyz remixed the song, credited to himself featuring Alan Walker and Gavin James.",style: TextStyle(color: Color(
+                        0xFFFFFFE9),height: 1.15, fontSize: 15),),]),),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.red, width: 3),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(6.0, 6.0),
+                        ),
+                      ],
+                    ),
+                  width: 400,
+                  height: 600,
+                  padding: EdgeInsets.only(left:10,right: 10,top: 7),),);
               }
           );
         }

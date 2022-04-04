@@ -1,5 +1,73 @@
 import 'package:flutter/material.dart';
 
+class MyCustomForm extends StatefulWidget {
+
+  @override
+  MyCustomFormState createState() {
+    return MyCustomFormState();
+  }
+}
+// Create a corresponding State class. This class holds data related to the form.
+class MyCustomFormState extends State<MyCustomForm> {
+// Create a global key that uniquely identifies the Form widget
+// and allows validation of the form.
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+// Build a Form widget using the _formKey created above.
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.featured_play_list_sharp),
+              hintText: 'Enter new Playlist Name',
+              labelText: 'Name',
+            ),
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.playlist_add),
+              hintText: 'Enter Songs',
+
+              labelText: 'Songs',
+            ),
+          ),
+          Center(child:
+          Container(
+            margin: const EdgeInsets.only(top:100),
+            height: 50,
+            width: 300,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              color: Colors.green,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset(6.0, 6.0),
+                ),
+              ],
+            ),
+            child:
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.green),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              child: const Text('DONE',style: TextStyle(color: Color(0xFFFFFFE9),height: 1.15, fontSize: 15)),
+            ),
+          ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class Navigation_and_Routing_2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,28 +86,8 @@ class Navigation_and_Routing_2 extends StatelessWidget {
           ])),
           backgroundColor: Colors.black
         ),
-      body:
-            Column(children: <Widget>[
-              const Text("Enter New Playlist Name -"),
-              const Text("Add Song Name -"),
-              Center(child:
-                Container(
-                    margin: const EdgeInsets.only(top:100),
-                    height: 50,
-                    width: 300,
-                    child:
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.green),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('DONE'),
-                      ),
-                ),
-              ),
-            ])
-    );
+      body: MyCustomForm()
+      );
   }
 }
 
